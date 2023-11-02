@@ -1,0 +1,18 @@
+.note-list-container{
+    margin: auto;
+    padding: 2rem 0;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.empty-list-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color);
+}

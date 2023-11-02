@@ -1,11 +1,10 @@
 import './App.scss';
-import NoteItem from './components/note-item/note-item.component';
+import NoteList from './components/note-list/note-list.component';
 
 function App() {
   return (
     <div className="App">
-     <NoteItem note={{title: "New Note", desc: "New Description"}}/>
-     <NoteItem note={{title: "New Note", desc: "New Description"}}/>
+    <NoteList />
     </div>
   );
 }
