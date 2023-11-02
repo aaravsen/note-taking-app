@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import DialogModal from "../dialog-modal/dialog-modal.component";
 import NoteForm from "../note-form/note-form.component";
 import "./create-new-note.style.scss";
-import DialogModal from "../dialog-modal/dialog-modal.component";
+import { NoteContext } from "../../contexts/note.context";
 
 const CreateNewNote = () => {
 
+    const { addNote } = useContext(NoteContext);
 
 
     const [openDialog, setOpenDialog] = useState(false);
@@ -13,8 +15,14 @@ const CreateNewNote = () => {
     }
 
     const onSubmitForm = (formData) => {
+        const { title, desc } = formData;
 
-        console.log("formData", formData);
+        const newNote = {
+            id: Date.now(), // You can use a better ID generation method
+            title,
+            desc
+        }
+        addNote(newNote);
         toggleDialog();
     }
     const onCancel = () => {
