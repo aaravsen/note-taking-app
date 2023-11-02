@@ -3,30 +3,34 @@ import { createContext, useReducer } from 'react';
 export const NoteContext = createContext();
 
 const initialState = {
-    notes:  []
+    notes:  JSON.parse(localStorage.getItem('notes')) || [], // Initialize state with notes from localStorage,
 };
 
 const noteReducer = (state, action) => {
+    let updatedNotes;
     switch (action.type) {
         case 'ADD_NOTE':
+            updatedNotes = [...state.notes, action.payload]; 
+            localStorage.setItem('notes', JSON.stringify(updatedNotes)); // Store updated notes in localStorage
             return {
                 ...state,
-                notes: [...state.notes, action.payload],
+                notes: updatedNotes,
             };
         case 'UPDATE_NOTE':
-             const updatedNotes = state.notes.map((note) =>
+             updatedNotes = state.notes.map((note) =>
                 note.id === action.payload.id ? action.payload : note
             );
+            localStorage.setItem('notes', JSON.stringify(updatedNotes)); // Store updated notes in localStorage
             return {
                 ...state,
                 notes: updatedNotes,
             };
         case 'DELETE_NOTE':
-             const filteredNotes = state.notes.filter((note) => note.id !== action.payload);
-
+             updatedNotes = state.notes.filter((note) => note.id !== action.payload);
+             localStorage.setItem('notes', JSON.stringify(updatedNotes)); // Store updated notes in localStorage
             return {
                 ...state,
-                notes: filteredNotes,
+                notes: updatedNotes,
             };
         default:
             return state;
