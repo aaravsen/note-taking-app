@@ -1,14 +1,11 @@
 import './App.scss';
-import ClassComponent from './components/class-component';
-import FunctionalComponent from './components/functional-component';
-import FunctionalComponentWithProps from './components/functional-component-with-props';
+import NoteItem from './components/note-item/note-item.component';
 
 function App() {
   return (
     <div className="App">
-     <ClassComponent />
-     <FunctionalComponent />
-     <FunctionalComponentWithProps name="Rishi" />
+     <NoteItem note={{title: "New Note", desc: "New Description"}}/>
+     <NoteItem note={{title: "New Note", desc: "New Description"}}/>
     </div>
   );
 }
