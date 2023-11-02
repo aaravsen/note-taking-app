@@ -1,15 +1,26 @@
 import { useState } from "react";
+import NoteForm from "../note-form/note-form.component";
 import "./create-new-note.style.scss";
 import DialogModal from "../dialog-modal/dialog-modal.component";
 
 const CreateNewNote = () => {
+
+
 
     const [openDialog, setOpenDialog] = useState(false);
     const toggleDialog = () => {
         setOpenDialog(prev => !prev);
     }
 
+    const onSubmitForm = (formData) => {
 
+        console.log("formData", formData);
+        toggleDialog();
+    }
+    const onCancel = () => {
+        toggleDialog();
+
+    }
 
     return (
         <>
@@ -17,8 +28,7 @@ const CreateNewNote = () => {
                 Create new note
             </button>
             <DialogModal isOpen={openDialog}>
-                <h1>DialogModal Goes here</h1>
-                <button onClick={toggleDialog}>Close DialogModal</button>
+                <NoteForm onSubmit={onSubmitForm} onCancel={onCancel} />
             </DialogModal>
         </>
     );
