@@ -7,6 +7,13 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
+    // if (isDarkMode) {
+    //   setIsDarkMode(false);
+    // } else {
+    //   setIsDarkMode(true);
+      
+    // }
+
     setIsDarkMode((prevMode) => !prevMode);
   };
 
